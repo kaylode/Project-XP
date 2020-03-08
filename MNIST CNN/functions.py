@@ -68,3 +68,16 @@ def predict(model, X):
     output = model(X)
     label = torch.max(output.data,1)[1]
     return label.cpu().numpy()[0]
+
+
+def preprocess_image(img):
+
+    thresh = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)[1]
+    cnts, tmp = cv2.findContours(thresh,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE) 
+    x,y,w,h = cv2.boundingRect(cnts[0])
+    img_crop = img[y:(y+h), x:(x+w)]
+    img_resized = cv2.resize(img_crop,(20,20))
+    
+    cv2.imshow("img",img_resized)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()

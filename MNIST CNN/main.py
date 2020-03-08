@@ -39,9 +39,9 @@ if READ_DATA:
             training_data.append([np.array(img), labels])
             count+=1
     np.random.shuffle(training_data)
-    np.save("training_data2.npy", training_data)
+    np.save("data_saves/training_data3.npy", training_data)
 else:
-    training_data = np.load("training_data2.npy",allow_pickle=1)
+    training_data = np.load("data_saves/training_data2.npy",allow_pickle=1)
 
 
 device = torch.device("cuda: 0")
@@ -89,7 +89,7 @@ if TRAIN_DATA:
         
         if (acc_list[-1]>best_val_score):
             best_val_score = acc_list[-1]
-            torch.save(model.state_dict(), "model3.pth")
+            torch.save(model.state_dict(), "model/model3.pth")
             best_loss_list=loss_list
             best_acc_list = acc_list
         fold_val_score.append(acc_list[-1])
@@ -99,7 +99,7 @@ if TRAIN_DATA:
 else:
     model = CNN()
     model.to(device)
-    model.load_state_dict(torch.load("model3.pth"))
+    model.load_state_dict(torch.load("model/model3.pth"))
     """
     test_path = path+"/test/test.png"
     test_img = cv2.imread(test_path,0)
