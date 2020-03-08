@@ -76,8 +76,25 @@ def preprocess_image(img):
     cnts, tmp = cv2.findContours(thresh,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE) 
     x,y,w,h = cv2.boundingRect(cnts[0])
     img_crop = img[y:(y+h), x:(x+w)]
-    img_resized = cv2.resize(img_crop,(20,20))
-    
-    cv2.imshow("img",img_resized)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+
+    a,b=h,w
+    d = int(max(h,w)/20)
+    if h > 20:
+        a = int(h/d)
+    if w > 20:
+        b = int(w/d)
+    a = 5 if a <= 0
+    b = 5 if b <= 0
+    img_crop = cv2.resize(img_crop,(b,a))
+
+    horizontal = 28 - b
+    vertical = 28 - a
+    top = bot = int(vertical/2)
+    left = right = int(horizontal/2)
+
+    img_padding = cv2.copyMakeBorder(img_crop,top,bot,left,right,cv2.BORDER_CONSTANT)
+
+    kernel = np.ones((5,5), np.uint8) 
+    img_dilation = cv2.dilate(img_resized,kernel=kernel,iterations = 1)
+
+    return img_dilation
