@@ -5,6 +5,8 @@ from torch.autograd import Variable
 import numpy as np 
 from tqdm import tqdm
 import matplotlib.pyplot as plt
+import cv2
+import math
 
 device = torch.device("cuda: 0")
 def forwardprop(model, error, optimizer, TrainLoader, ValLoader=None,count =0, loss_list=[], acc_list=[], training = False):
@@ -77,16 +79,18 @@ def preprocess_image(img):
     x,y,w,h = cv2.boundingRect(cnts[0])
     img_crop = img[y:(y+h), x:(x+w)]
 
-    a,b=h,w
-    d = int(max(h,w)/20)
-    if h > 20:
-        a = int(h/d)
-    if w > 20:
-        b = int(w/d)
-    a = 5 if a <= 0
-    b = 5 if b <= 0
-    img_crop = cv2.resize(img_crop,(b,a))
+    DIGITS_SIZE = 20
 
+    a,b=h,w
+    d = math.ceil(max(h,w)/DIGITS_SIZE)
+    if h > DIGITS_SIZE:
+        a = int(h/d)
+    if w > DIGITS_SIZE:
+        b = int(w/d)
+    a = 5 if a <= 0 else a
+    b = 5 if b <= 0 else b
+    img_crop = cv2.resize(img_crop,(b,a))
+    
     horizontal = 28 - b
     vertical = 28 - a
     top = bot = int(vertical/2)
@@ -94,7 +98,8 @@ def preprocess_image(img):
 
     img_padding = cv2.copyMakeBorder(img_crop,top,bot,left,right,cv2.BORDER_CONSTANT)
 
-    kernel = np.ones((5,5), np.uint8) 
-    img_dilation = cv2.dilate(img_resized,kernel=kernel,iterations = 1)
-
-    return img_dilation
+    kernel = np.ones((2,2), np.uint8) 
+    img_dilation = cv2.dilate(img_padding,kernel=kernel,iterations = 1)
+    
+    img = cv2.resize(img_dilation,(28,28))
+    return img

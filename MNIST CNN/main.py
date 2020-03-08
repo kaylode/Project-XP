@@ -33,15 +33,16 @@ if READ_DATA:
     count = 0
     for labels in range(10):
         path1 = os.path.join(path,DATA,str(labels))
-        for f in tqdm(os.listdir(path1)):
-            path2 = os.path.join(path1,f)
+        for fo in tqdm(os.listdir(path1)):
+            path2 = os.path.join(path1,fo)
             img = cv2.imread(path2,0)
+            img = f.preprocess_image(img)
             training_data.append([np.array(img), labels])
             count+=1
     np.random.shuffle(training_data)
     np.save("data_saves/training_data3.npy", training_data)
 else:
-    training_data = np.load("data_saves/training_data2.npy",allow_pickle=1)
+    training_data = np.load("data_saves/training_data3.npy",allow_pickle=1)
 
 
 device = torch.device("cuda: 0")
@@ -89,7 +90,7 @@ if TRAIN_DATA:
         
         if (acc_list[-1]>best_val_score):
             best_val_score = acc_list[-1]
-            torch.save(model.state_dict(), "model/model3.pth")
+            torch.save(model.state_dict(), "model/preprocess-model.pth")
             best_loss_list=loss_list
             best_acc_list = acc_list
         fold_val_score.append(acc_list[-1])
@@ -99,31 +100,47 @@ if TRAIN_DATA:
 else:
     model = CNN()
     model.to(device)
-    model.load_state_dict(torch.load("model/model3.pth"))
-    """
+    model.load_state_dict(torch.load("model/preprocess-model.pth"))
+    
     test_path = path+"/test/test.png"
     test_img = cv2.imread(test_path,0)
-    test_img = cv2.resize(test_img,(28,28))
+    img2 = cv2.resize(test_img,(28,28))
+    test_img = f.preprocess_image(test_img)
     test_img = np.array(test_img)
 
     prediction = f.predict(model,test_img)
+    plt.subplot(1,2,1)
     plt.imshow(test_img)
     plt.title("Predict: "+str(prediction))
+
+    plt.subplot(122)
+    plt.imshow(img2)
+    plt.title("Raw Image")
     plt.show()
 
     """
+
     test_path = os.listdir(path+"/data/testSet")
-    plt.subplot(2,5,1)
+    NUM_PIC = 10
+    plt.subplot(2,NUM_PIC,1)
+    
     a = np.random.randint(2000)
 
-    for id, i in enumerate(test_path[a:a+10]):
+    for id, i in enumerate(test_path[a:a+NUM_PIC]):
         img = cv2.imread(os.path.join(path+"/data/testSet",i),0)
-        img = cv2.resize(img,(28,28))
+        img2 = cv2.resize(img,(28,28))
+        img = f.preprocess_image(img)  
         img = np.array(img)
         prediction = f.predict(model,img)
-        plt.subplot(2,5,id+1)
-        plt.title("Predict: "+str(prediction))
+
+        plt.subplot(2,NUM_PIC,id+1)
+        plt.title(str(prediction))
         plt.imshow(img)
+        plt.axis("off")
+
+        plt.subplot(2,NUM_PIC,id+NUM_PIC+1)
+        plt.imshow(img2)
+        plt.axis("off")
     plt.show()
     
-
+"""
