@@ -22,10 +22,10 @@ class CNN(nn.Module):
         x = self.conv2(x)
         x = self.relu(x)
         x = self.max_pool2d(x)
-        x = x.reshape(x.size(0), -1)
+        x = x.reshape(x.size(0), -1)    #Flatten image
         x = self.fc1(x)
         x = self.relu(x)
-        x = self.dropout(x)
+        #x = self.dropout(x)
         x = self.fc2(x)
         return x
 
