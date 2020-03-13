@@ -15,9 +15,10 @@ from sklearn.model_selection import KFold
 
 path = os.path.dirname(__file__)
 
-PROCESS_IMAGES = 0
-READ_DATA = 0
-TRAIN_DATA = 0
+PROCESS_IMAGES = 0  #Turn off
+READ_DATA = 0       #Read the input again
+TRAIN_DATA = 0      #Train on/off
+
 if PROCESS_IMAGES:
     img = cv2.imread(path+"/digits.png", 0)
     cells = [np.hsplit(row,100) for row in np.vsplit(img,50)]
@@ -39,36 +40,26 @@ if READ_DATA:
             img = f.preprocess_image(img)
             training_data.append([np.array(img), labels])
             count+=1
-    np.random.shuffle(training_data)
+    np.random.shuffle(training_data)    #Shuffle data
     np.save("data_saves/training_data3.npy", training_data)
 else:
     training_data = np.load("data_saves/training_data3.npy",allow_pickle=1)
 
 
 device = torch.device("cuda: 0")
-
-
 best_acc_list=[]
 best_loss_list=[]
 fold_val_score =[]
-if TRAIN_DATA:
-    
 
+if TRAIN_DATA:
     X = torch.Tensor([i[0] for i in training_data]).view(-1,28,28)
     X = X/255.0
     y = torch.Tensor([i[1] for i in training_data]).type(torch.LongTensor)
-
-    """
-    val_size = 4200
-    X_train = X[:-val_size]
-    y_train = y[:-val_size]
-
-    X_val = X[-val_size:]
-    y_val = y[-val_size:]
-    """
+    #K-Fold Cross-Validation
     kf = KFold(n_splits = 10)
     best_val_score = 0
     for i, (train_id, test_id) in enumerate(kf.split(X,y)):
+        #Initialize model, loss function and optimizer
         model = CNN()
         model.to(device)
         error = nn.CrossEntropyLoss()
@@ -77,12 +68,12 @@ if TRAIN_DATA:
         y_train = y[train_id]
         X_val = X[test_id]
         y_val = y[test_id]
-
+        #Load data into Pytorch DataLoader
         training_set = data.TensorDataset(X_train,y_train)
         training_set_loader = data.DataLoader(training_set,batch_size=1000)
         val_set = data.TensorDataset(X_val,y_val)
         val_set_loader = data.DataLoader(val_set,batch_size=1000)
-
+        #Train model
         loss_list = []
         acc_list = []
         count = 0
@@ -102,24 +93,29 @@ else:
     model.to(device)
     model.load_state_dict(torch.load("model/preprocess-model.pth"))
     
+ 
     test_path = path+"/test/test.png"
     test_img = cv2.imread(test_path,0)
     img2 = cv2.resize(test_img,(28,28))
     test_img = f.preprocess_image(test_img)
     test_img = np.array(test_img)
 
-    prediction = f.predict(model,test_img)
+    label, prediction = f.predict(model,test_img)
+    
+    result=""
+    for i,j in prediction.items():
+            result += str(i) + ": " + str(np.round(j*100,2)) + "%\n"
+    
     plt.subplot(1,2,1)
     plt.imshow(test_img)
-    plt.title("Predict: "+str(prediction))
+    plt.title("Digits Percentage: \n"+ str(result))
 
     plt.subplot(122)
     plt.imshow(img2)
     plt.title("Raw Image")
     plt.show()
 
-    """
-
+"""
     test_path = os.listdir(path+"/data/testSet")
     NUM_PIC = 10
     plt.subplot(2,NUM_PIC,1)
@@ -131,7 +127,7 @@ else:
         img2 = cv2.resize(img,(28,28))
         img = f.preprocess_image(img)  
         img = np.array(img)
-        prediction = f.predict(model,img)
+        prediction,_ = f.predict(model,img)
 
         plt.subplot(2,NUM_PIC,id+1)
         plt.title(str(prediction))
@@ -142,5 +138,5 @@ else:
         plt.imshow(img2)
         plt.axis("off")
     plt.show()
-    
-"""
+    """
+
