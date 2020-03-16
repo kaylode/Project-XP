@@ -12,7 +12,7 @@ from tqdm import tqdm
 from classes import CNN
 import functions as f
 from sklearn.model_selection import KFold
-
+import csv
 path = os.path.dirname(__file__)
 
 PROCESS_IMAGES = 0  #Turn off
@@ -43,7 +43,8 @@ if READ_DATA:
     np.random.shuffle(training_data)    #Shuffle data
     np.save("data_saves/training_data3.npy", training_data)
 else:
-    training_data = np.load("data_saves/training_data3.npy",allow_pickle=1)
+    if TRAIN_DATA:
+        training_data = np.load("data_saves/training_data3.npy",allow_pickle=1)
 
 
 device = torch.device("cuda: 0")
@@ -93,7 +94,9 @@ else:
     model.to(device)
     model.load_state_dict(torch.load("model/preprocess-model.pth"))
     
- 
+
+
+"""
     test_path = path+"/test/test.png"
     test_img = cv2.imread(test_path,0)
     img2 = cv2.resize(test_img,(28,28))
@@ -114,29 +117,29 @@ else:
     plt.imshow(img2)
     plt.title("Raw Image")
     plt.show()
-
 """
-    test_path = os.listdir(path+"/data/testSet")
-    NUM_PIC = 10
-    plt.subplot(2,NUM_PIC,1)
+
+test_path = os.listdir(path+"/data/testSet")
+NUM_PIC = 5
+plt.subplot(2,NUM_PIC,1)
     
-    a = np.random.randint(2000)
+a = np.random.randint(2000)
 
-    for id, i in enumerate(test_path[a:a+NUM_PIC]):
-        img = cv2.imread(os.path.join(path+"/data/testSet",i),0)
-        img2 = cv2.resize(img,(28,28))
-        img = f.preprocess_image(img)  
-        img = np.array(img)
-        prediction,_ = f.predict(model,img)
+for id, i in enumerate(test_path[a:a+NUM_PIC]):
+    img = cv2.imread(os.path.join(path+"/data/testSet",i),0)
+    img2 = cv2.resize(img,(28,28))
+    img = f.preprocess_image(img)  
+    img = np.array(img)
+    prediction,_ = f.predict(model,img)
 
-        plt.subplot(2,NUM_PIC,id+1)
-        plt.title(str(prediction))
-        plt.imshow(img)
-        plt.axis("off")
+    plt.subplot(2,NUM_PIC,id+1)
+    plt.title(str(prediction))
+    plt.imshow(img)
+    plt.axis("off")
 
-        plt.subplot(2,NUM_PIC,id+NUM_PIC+1)
-        plt.imshow(img2)
-        plt.axis("off")
-    plt.show()
-    """
+    plt.subplot(2,NUM_PIC,id+NUM_PIC+1)
+    plt.imshow(img2)
+    plt.axis("off")
+plt.show()
+
 

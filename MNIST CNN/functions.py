@@ -86,7 +86,7 @@ def preprocess_image(img):
     #Find countor, bounding box
     cnts, tmp = cv2.findContours(thresh,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE) 
     if len(cnts) == 0:
-        print "Sorry No contour Found."
+        print("Sorry No contour Found.")
     else:
         x,y,w,h = cv2.boundingRect(cnts[0])
         img_crop = img[y:(y+h), x:(x+w)]
