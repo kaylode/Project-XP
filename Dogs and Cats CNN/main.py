@@ -27,8 +27,9 @@ VAL_SAMPLES = 4935
 LABEL = {"cats":0, "dogs": 1}
 
 DATA_DIR = 'data/trainingSet' 
-TEST_DIR = 'data/testSet'
+TEST_DIR = 'test'
 
+#Data Augmentation for normalizing data
 data_transforms = transforms.Compose([
         transforms.RandomHorizontalFlip(),
         transforms.RandomRotation(20),
@@ -39,21 +40,23 @@ data_transforms = transforms.Compose([
 
 if __name__ == '__main__':
         if TRAINING_DATA:
-                dataset = datasets.ImageFolder(DATA_DIR, transform=data_transforms)
-                
-                train_datasets ,val_datasets = torch.utils.data.random_split(dataset, [TRAINING_SAMPLES, VAL_SAMPLES]) 
-                
+                #Load data to datasets, dataloader
+                dataset = datasets.ImageFolder(DATA_DIR, transform=data_transforms)  
+                train_datasets ,val_datasets = torch.utils.data.random_split(dataset, [TRAINING_SAMPLES, VAL_SAMPLES])  
                 trainloader = data.DataLoader(train_datasets, batch_size=BATCH_SIZE, num_workers=4, shuffle=True)
                 valloader = data.DataLoader(val_datasets, batch_size=BATCH_SIZE, num_workers=4)
-
+                
                 train_loss_list = []
                 val_loss_list = []
                 val_acc_list = []
-
+                #Load model ResNet18
                 model = models.resnet18(pretrained=True)
                 model = model.to(device)
+                #Freeze all convolution layer
                 for param in model.parameters():
                         param.requires_grad = False
+
+                #Unfreeze Fully-connected layer, edit the last layer 
                 model.fc = nn.Linear(in_features=512, out_features=2).to(device)
                 error = nn.CrossEntropyLoss()
                 optimizer = torch.optim.Adam(model.parameters(), lr = 1e-4)
@@ -64,8 +67,9 @@ if __name__ == '__main__':
                 model.fc = nn.Linear(num_ftrs, 2)
                 model = model.to(device)
                 model.load_state_dict(torch.load("model/model5.pth"))
-
-        f.visualize_model(model,TEST_DIR)
+                
+        #Visualize data
+        f.visualize_model(model,TEST_DIR,6)
       
 
         

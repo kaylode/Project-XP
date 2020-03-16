@@ -18,7 +18,7 @@ IMG_SIZE = 224
 TRAINING_SAMPLES = 20000
 VAL_SAMPLES = 4946
 
-
+#Convert Tensor data to image for plotting
 def imshow(img):
     img = img.numpy().transpose((1, 2, 0))
     mean = np.array([0.485, 0.456, 0.406])
@@ -26,7 +26,8 @@ def imshow(img):
     img = std * img + mean
     img = np.clip(img, 0, 1)
     plt.imshow(img)
-    
+
+#Forward Propagation for both training and validation
 def forwardprop(model, error, optimizer, trainloader, valloader=None, training = False):
     correct = 0
     total = 0
@@ -61,6 +62,7 @@ def forwardprop(model, error, optimizer, trainloader, valloader=None, training =
     else:
         return accuracy, total_loss
 
+#Train data
 def train(model, error, optimizer, trainloader, valloader):
     EPOCHS = 10
     train_loss_list = []
@@ -109,11 +111,14 @@ def visualize_model(model,TEST_DIR, NUM_PIC = 10):
         ])
 
 
-    test_path = os.listdir(os.path.join(path,TEST_DIR+"/test"))
-    a = np.random.randint(2000)
+    test_path = os.listdir(os.path.join(path,TEST_DIR))
+   
+    a = 1
     plt.subplot(2,NUM_PIC/2,1)
-    for id, i in enumerate(test_path[a:a+10]):
-        img = Image.open(os.path.join(path,TEST_DIR+"/test/"+i))
+    for id, i in enumerate(test_path[a:a+NUM_PIC]):
+        
+        img = Image.open(os.path.join(path,TEST_DIR,i))
+        
         img2 = test_transforms(img)
         result = predict(model,img2)
         plt.subplot(2,NUM_PIC/2,id+1)
