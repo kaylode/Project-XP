@@ -1,0 +1,9 @@
+
+*.jpg
+*.gz
+FashionMNIST Generator (using GAN)/data/FashionMNIST/raw/train-labels-idx1-ubyte
+FashionMNIST Generator (using GAN)/data/FashionMNIST/raw/train-images-idx3-ubyte
+FashionMNIST Generator (using GAN)/data/FashionMNIST/raw/t10k-labels-idx1-ubyte
+FashionMNIST Generator (using GAN)/data/FashionMNIST/raw/t10k-images-idx3-ubyte
+FashionMNIST Generator (using GAN)/data/FashionMNIST/processed/test.pt
+FashionMNIST Generator (using GAN)/data/FashionMNIST/processed/training.pt
