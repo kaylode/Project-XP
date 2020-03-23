@@ -25,11 +25,6 @@ data_transform = transforms.Compose([
 
 TRAINING = 0
 
-
-
-
-
-
 if __name__ =="__main__":
     D = Discriminator().to(device)
     G = Generator().to(device) 
