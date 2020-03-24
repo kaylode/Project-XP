@@ -27,7 +27,7 @@ from tqdm import tqdm
 data_dir = "D:\\GITHUB\\Project-XP\\Anime Girls Generator (DCGAN)\\data\\raw"
 faceCascade = cv2.CascadeClassifier('D:\\GITHUB\\Project-XP\\Anime Girls Generator (DCGAN)\\lbpcascade_animeface.xml')
 output_dir = "D:\\GITHUB\Project-XP\\Anime Girls Generator (DCGAN)\\data\\trainingSet\\faces"
-file_name = "mk2"
+file_name = "mk3"
 crop_size = (64,64)
 only_color = True
 
@@ -44,7 +44,7 @@ for count,filename in enumerate(tqdm(os.listdir(data_dir))):
         faces = faceCascade.detectMultiScale(gray,
                                              scaleFactor = 1.01,
                                              minNeighbors = 5,
-                                             minSize = (60, 60))
+                                             minSize = (50, 50))
         #if any faces are detected, we only extract the biggest detected region
         if len(faces) == 0:
             continue
