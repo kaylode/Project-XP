@@ -8,3 +8,18 @@ FashionMNIST Generator (using GAN)/data/FashionMNIST/raw/t10k-images-idx3-ubyte
 FashionMNIST Generator (using GAN)/data/FashionMNIST/processed/test.pt
 FashionMNIST Generator (using GAN)/data/FashionMNIST/processed/training.pt
 *.png
+MNIST (CNN-Pytorch)/data/MNIST/raw/t10k-images-idx3-ubyte
+MNIST (CNN-Pytorch)/data/MNIST/processed/training.pt
+MNIST (CNN-Pytorch)/data/MNIST/processed/test.pt
+MNIST (CNN-Pytorch)/data/MNIST/raw/t10k-labels-idx1-ubyte
+MNIST (CNN-Pytorch)/data/MNIST/raw/train-images-idx3-ubyte
+MNIST (CNN-Pytorch)/data/MNIST/raw/train-labels-idx1-ubyte
+MNIST (CNN-Pytorch)/.vscode/launch.json
+MNIST (CNN-Pytorch)/.vscode/settings.json
+FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/raw/train-labels-idx1-ubyte
+FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/raw/train-images-idx3-ubyte
+FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/raw/t10k-labels-idx1-ubyte
+FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/raw/t10k-images-idx3-ubyte
+FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/processed/training.pt
+FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/processed/test.pt
+*.zip
