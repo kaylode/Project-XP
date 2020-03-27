@@ -23,3 +23,9 @@ FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/raw/t10k-images-idx3-ub
 FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/processed/training.pt
 FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/processed/test.pt
 *.zip
+MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/train-labels-idx1-ubyte
+MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/train-images-idx3-ubyte
+MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/t10k-labels-idx1-ubyte
+MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/t10k-images-idx3-ubyte
+MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/processed/training.pt
+MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/processed/test.pt
