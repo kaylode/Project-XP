@@ -29,3 +29,5 @@ MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/t10k-labels-idx1-ubyte
 MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/t10k-images-idx3-ubyte
 MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/processed/training.pt
 MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/processed/test.pt
+SVHN Classification (CNN-Pytorch)/data/extra/extra_32x32.mat
+SVHN Classification (CNN-Pytorch)/data/train/train_32x32.mat
