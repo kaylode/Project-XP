@@ -31,3 +31,22 @@ MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/processed/training.pt
 MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/processed/test.pt
 SVHN Classification (CNN-Pytorch)/data/extra/extra_32x32.mat
 SVHN Classification (CNN-Pytorch)/data/train/train_32x32.mat
+*.pt
+CNNs/MNIST (CNN-Pytorch)/data/MNIST/raw/t10k-images-idx3-ubyte
+CNNs/MNIST (CNN-Pytorch)/data/MNIST/raw/t10k-labels-idx1-ubyte
+CNNs/MNIST (CNN-Pytorch)/data/MNIST/raw/train-images-idx3-ubyte
+CNNs/MNIST (CNN-Pytorch)/data/MNIST/raw/train-labels-idx1-ubyte
+GANs/FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/raw/t10k-images-idx3-ubyte
+GANs/FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/raw/t10k-labels-idx1-ubyte
+GANs/FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/raw/train-images-idx3-ubyte
+GANs/FashionMNIST Generator (DCGAN-Pytorch)/data/FashionMNIST/raw/train-labels-idx1-ubyte
+*.mp4
+GANs/Horse to Zebrra (CycleGAN-Pytorch)/camera_channel.py
+GANs/Horse to Zebrra (CycleGAN-Pytorch)/main.py
+GANs/MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/t10k-images-idx3-ubyte
+GANs/MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/t10k-labels-idx1-ubyte
+GANs/MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/train-images-idx3-ubyte
+GANs/MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/train-labels-idx1-ubyte
+*.mat
+*.Bmp
+*.csv
