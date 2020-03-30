@@ -48,3 +48,5 @@ GANs/MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/t10k-labels-idx1-u
 GANs/MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/train-images-idx3-ubyte
 GANs/MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/train-labels-idx1-ubyte
 *.mat
+*.Bmp
+*.csv
