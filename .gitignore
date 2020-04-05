@@ -50,3 +50,4 @@ GANs/MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/train-labels-idx1-
 *.mat
 *.Bmp
 *.csv
+*.txt
