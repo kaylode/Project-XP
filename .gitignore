@@ -51,3 +51,4 @@ GANs/MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/train-labels-idx1-
 *.Bmp
 *.csv
 *.txt
+Object Detection/SVHN Recognition (FasterRCNN-Pytorch)/model/model.pth
