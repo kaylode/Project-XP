@@ -53,3 +53,15 @@ GANs/MNIST Generator (Conditional GAN-Pytorch)/data/MNIST/raw/train-labels-idx1-
 On-goings/SVHN Classification (CNN-Pytorch)/model/model.pth
 Object Detection/SVHN Recognition (FasterRCNN-Pytorch)/model/model.pth
 Object Detection/SVHN Recognition (FasterRCNN-Pytorch)/SVHN Detection & Recogition .ipynb
+NLP/Toxic Comment Classification/pretrained_model/bert-base-uncased-vocab.txt
+*.pth
+On-goings/FashionMNIST Generator (cDCGAN-Pytorch)/data/FashionMNIST/raw/t10k-labels-idx1-ubyte
+On-goings/FashionMNIST Generator (cDCGAN-Pytorch)/data/FashionMNIST/raw/t10k-images-idx3-ubyte
+On-goings/FashionMNIST Generator (cDCGAN-Pytorch)/data/FashionMNIST/raw/train-images-idx3-ubyte
+On-goings/FashionMNIST Generator (cDCGAN-Pytorch)/data/FashionMNIST/raw/train-labels-idx1-ubyte
+NLP/Toxic Comment Classification/pretrained_model/pytorch_model.bin
+NLP/Toxic Comment Classification/pretrained_model/config.json
+NLP/Toxic Comment Classification/pretrained_model/bert-base-uncased-tf_model.h5
+NLP/Toxic Comment Classification/.vector_cache/glove.6B.100d.txt
+NLP/IMDB Movies Sentiment Classification (LSTM-Pytorch)/.vector_cache/glove.6B.100d.txt
+NLP/Disaster Tweets Real or Fake Classification (RNN-Pytorch)/.vector_cache/glove.6B.100d.txt
