@@ -65,3 +65,28 @@ NLP/Toxic Comment Classification/pretrained_model/bert-base-uncased-tf_model.h5
 NLP/Toxic Comment Classification/.vector_cache/glove.6B.100d.txt
 NLP/IMDB Movies Sentiment Classification (LSTM-Pytorch)/.vector_cache/glove.6B.100d.txt
 NLP/Disaster Tweets Real or Fake Classification (RNN-Pytorch)/.vector_cache/glove.6B.100d.txt
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/cifar-10-batches-py/test_batch
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/test/test_batch
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_1
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_2
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_3
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_4
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_5
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/test/test_batch
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_1
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_2
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_3
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_4
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_5
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/test/test_batch
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_1
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_2
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_3
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_4
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/train/data_batch_5
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/cifar-10-batches-py/data_batch_5
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/cifar-10-batches-py/data_batch_4
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/cifar-10-batches-py/data_batch_3
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/cifar-10-batches-py/data_batch_2
+On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/cifar-10-batches-py/data_batch_1
+*.meta
