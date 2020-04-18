@@ -90,3 +90,12 @@ On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/cifar-10-bat
 On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/cifar-10-batches-py/data_batch_2
 On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/data/cifar-10-batches-py/data_batch_1
 *.meta
+NLP/Toxic Comment Classification/pretrained_model/bert-base-uncased.rar
+On-goings/Tweet Sentiment Extraction/.vector_cache/glove.6B.100d.txt
+On-goings/Tweet Sentiment Extraction/data/abbreviation.txt
+On-goings/Tweet Sentiment Extraction/data/labeledTrainData.tsv
+On-goings/Tweet Sentiment Extraction/pretrained_model/config.json
+On-goings/Tweet Sentiment Extraction/pretrained_model/pretrained_model.rar
+On-goings/Tweet Sentiment Extraction/pretrained_model/pytorch_model.bin
+On-goings/Tweet Sentiment Extraction/pretrained_model/tf_model.h5
+On-goings/Tweet Sentiment Extraction/pretrained_model/vocab.txt
