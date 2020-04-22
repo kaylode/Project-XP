@@ -99,3 +99,4 @@ On-goings/Tweet Sentiment Extraction/pretrained_model/pretrained_model.rar
 On-goings/Tweet Sentiment Extraction/pretrained_model/pytorch_model.bin
 On-goings/Tweet Sentiment Extraction/pretrained_model/tf_model.h5
 On-goings/Tweet Sentiment Extraction/pretrained_model/vocab.txt
+*.json
