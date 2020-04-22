@@ -100,3 +100,8 @@ On-goings/Tweet Sentiment Extraction/pretrained_model/pytorch_model.bin
 On-goings/Tweet Sentiment Extraction/pretrained_model/tf_model.h5
 On-goings/Tweet Sentiment Extraction/pretrained_model/vocab.txt
 *.json
+*.txt
+NLP/Tweet Sentiment Extraction (BERT - Pytorch)/pretrained_model/tf_model.h5
+NLP/Tweet Sentiment Extraction (BERT - Pytorch)/pretrained_model/pytorch_model.bin
+NLP/Toxic Comment Classification (BERT - Pytorch)/pretrained_model/pytorch_model.bin
+NLP/Toxic Comment Classification (BERT - Pytorch)/pretrained_model/bert-base-uncased-tf_model.h5
