@@ -18,7 +18,7 @@ class COCODataset(data.Dataset):
         self.caption_lengths = []
         self.tokens_list = []
         for cap in tqdm(captions_list):
-            tokens = mytokenizer(cap["captions"][4])
+            tokens = mytokenizer(cap["captions"][3])
             self.caption_lengths.append(len(tokens))
             self.tokens_list.append(tokens)
             
