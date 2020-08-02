@@ -10,6 +10,7 @@ from torchvision import transforms
 from models.resnet import ResNet34
 from losses.smoothceloss import smoothCELoss
 from metrics.classification.accuracy import AccuracyMetric
+from trainer.trainer import Trainer
 
 transforms = transforms.Compose([
     transforms.Resize((224,224)),
@@ -27,56 +28,7 @@ def count_parameters(model):
 
     
 
-def train_epoch(model, optimizer,criterion,  trainiter, print_per_iter = 500):
-    model.train()
-    epoch_loss = 0
-    iter_loss = 0
-   
-    for i, batch in enumerate(tqdm(trainiter)):
-        optimizer.zero_grad()
 
-        inputs = batch["img"]
-        targets = batch["label"]
-        inputs = inputs.to(device)
-        targets = targets.to(device)
-        outputs = model(inputs) #batchsize, label_dim
-        loss = criterion(outputs, targets)
-
-        loss.backward()
-        
-        optimizer.step()
-        
-
-        epoch_loss += loss.item()
-        iter_loss += loss.item()
-     
-
-        if (i % print_per_iter == 0 or i == len(trainiter) - 1) and i != 0:
-            print("\tIterations: [{}|{}] | Train loss: {:10.4f}".format(i+1, len(trainiter), iter_loss/ print_per_iter))
-            iter_loss = 0
-    return epoch_loss / len(trainiter)
-
-def evaluate_epoch(model, criterion, valiter):
-    model.eval()
-    epoch_loss = 0
-    epoch_acc = 0
-    acc = AccuracyMetric()
-    with torch.no_grad():
-          for batch in tqdm(valiter):
-
-                inputs = batch["img"]
-                targets = batch["label"]
-                inputs = inputs.to(device)
-                targets = targets.to(device)
-                outputs = model(inputs) #batchsize, label_dim
-                loss = criterion(outputs, targets)
-
-                acc.update(outputs, targets)
-             
-                epoch_loss += loss
-    epoch_acc = acc.value()
-
-    return epoch_loss / len(valiter), epoch_acc / len(valiter)
 
 
 if __name__ == "__main__":
@@ -125,11 +77,14 @@ if __name__ == "__main__":
     print("Training Completed!")"""
     
     EPOCHS = 10
-    model = ResNet34(n_classes = NUM_CLASSES, device = device)
-    criterion = smoothCELoss(device= device)
-    optimizer = torch.optim.Adam(model.parameters(), lr= 1e-4)
-    for epoch in range(0,EPOCHS):
-        train_loss = train_epoch(model,optimizer, criterion, trainloader, print_per_iter=100)
-        val_loss, val_acc = evaluate_epoch(model, criterion, valloader)
-        
+    criterion = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam
+    model = ResNet34(NUM_CLASSES, lr = 1e-3, criterion= criterion, optimizer= optimizer, device = device)
     
+    trainer = Trainer(model, trainloader, valloader)
+    print(trainer)
+    
+    #trainer.fit(print_per_iter=100)
+    loss, metrics = trainer.evaluate_epoch()
+    print(loss)
+    print(metrics)

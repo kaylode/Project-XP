@@ -27,7 +27,7 @@ class AccuracyMetric():
 
         if values.is_cuda:
             values = values.cpu()
-        return np.around(values.numpy(), decimals = self.decimals)
+        return {"acc" : np.around(values.numpy(), decimals = self.decimals)}
 
     def __str__(self):
         return f'Accuracy: {self.value()}'
@@ -42,7 +42,8 @@ if __name__ == '__main__':
     outputs = torch.LongTensor(out)
     targets = torch.LongTensor(label)
     accuracy.update(outputs, targets)
-    accuracy.update(outputs, targets)
-    print(accuracy)
+    di = {}
+    di.update(accuracy.value())
+    print(di)
     
   
