@@ -6,7 +6,7 @@ class AccuracyMetric():
         self.reset()
         self.decimals = decimals
 
-    def calculate(self, output, target):
+    def compute(self, output, target):
         pred = torch.argmax(output, dim=1)
         correct = (pred == target).sum()
         sample_size = output.size(0)
@@ -14,7 +14,7 @@ class AccuracyMetric():
 
     def update(self,  output, target):
         assert isinstance(output, torch.Tensor), "Please input tensors"
-        value = self.calculate(output, target)
+        value = self.compute(output, target)
         self.correct += value[0]
         self.sample_size += value[1]
 

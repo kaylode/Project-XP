@@ -50,10 +50,8 @@ class ResNet34(BaseModel):
         outputs = self(inputs) #batchsize, label_dim
         loss = self.criterion(outputs, targets)
 
-        metric_dict = {}
-        for metric in self.metrics:
-            metric.update(outputs, targets)
-            metric_dict.update(metric.value())
+        metric_dict = self.update_metrics(outputs, targets)
+        
         return loss , metric_dict
 
     def forward_test(self):
@@ -63,6 +61,13 @@ class ResNet34(BaseModel):
         with torch.no_grad():
             outputs = self(inputs)
         return outputs
+
+    def update_metrics(self, outputs, targets):
+        metric_dict = {}
+        for metric in self.metrics:
+            metric.update(outputs, targets)
+            metric_dict.update(metric.value())
+        return metric_dict
 
     def reset_metrics(self):
         for metric in self.metrics:
