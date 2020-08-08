@@ -35,3 +35,14 @@ class BaseModel(nn.Module):
 
     def trainable_parameters(self):
         return sum(p.numel() for p in self.parameters() if p.requires_grad)
+
+    def update_metrics(self, outputs, targets):
+        metric_dict = {}
+        for metric in self.metrics:
+            metric.update(outputs, targets)
+            metric_dict.update(metric.value())
+        return metric_dict
+    
+    def reset_metrics(self):
+        for metric in self.metrics:
+            metric.reset()

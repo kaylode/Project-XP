@@ -62,13 +62,6 @@ class ResNet34(BaseModel):
             outputs = self(inputs)
         return outputs
 
-    def update_metrics(self, outputs, targets):
-        metric_dict = {}
-        for metric in self.metrics:
-            metric.update(outputs, targets)
-            metric_dict.update(metric.value())
-        return metric_dict
+    
 
-    def reset_metrics(self):
-        for metric in self.metrics:
-            metric.reset()
+    
