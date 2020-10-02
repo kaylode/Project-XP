@@ -150,3 +150,12 @@ On-goings/ChatBot/data/cornell_movie_dialogs_corpus/Data_Analysis.ipynb
 On-goings/ChatBot/data/cornell_movie_dialogs_corpus/chameleons.pdf
 On-goings/CIFAR-10 Classification (CNN+KMeans-Sklearn+Pytorch)/.ipynb_checkpoints/Untitled-checkpoint.ipynb
 On-goings/Garbage Classification/datasets/garbage.rar
+*.pyc
+CNNs/Classification/MNIST (CNN-Pytorch)/data/MNIST/raw/t10k-images-idx3-ubyte
+CNNs/Classification/MNIST (CNN-Pytorch)/data/MNIST/raw/t10k-labels-idx1-ubyte
+CNNs/Classification/MNIST (CNN-Pytorch)/data/MNIST/raw/train-images-idx3-ubyte
+CNNs/Classification/MNIST (CNN-Pytorch)/data/MNIST/raw/train-labels-idx1-ubyte
+*.json
+*.txt
+*.pyc
+*.xml
