@@ -159,3 +159,5 @@ CNNs/Classification/MNIST (CNN-Pytorch)/data/MNIST/raw/train-labels-idx1-ubyte
 *.txt
 *.pyc
 *.xml
+On-goings/.ipynb_checkpoints/Augmentation-checkpoint.ipynb
+On-goings/Augmentation.ipynb
